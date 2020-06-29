@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Programmer {
-    private String name;
-    private ArrayList<String> skillList;
-    private Integer accuracy;
-    private Integer punctuality;
-    private Double cost;
+    public String name;
+    public String[] skillList;
+    public Integer accuracy;
+    public Integer punctuality;
+    public Double cost;
 }

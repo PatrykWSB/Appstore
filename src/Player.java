@@ -1,11 +1,14 @@
 import java.util.ArrayList;
 
-public class Player extends Programmer {
-    private Double cash;
-    private ArrayList<Programmer> programmerList;
-    private Byte sellers;
-    private Byte testers;
-    private ArrayList<Project> availableProjectsList;
-    private ArrayList<Project> startedProjectsList;
+public class Player {
+    public String name;
+    public String[] skillList = {"DATABASE","FRONTEND","WORDPRESS","PRESTASHOP"};
+    public Double cash;
+    public ArrayList<Programmer> programmerList = new ArrayList<>();
+    public Integer sellers;
+    public Integer testers;
+    public ArrayList<Project> availableProjectsList = new ArrayList<>();
+    public ArrayList<Project> startedProjectsList = new ArrayList<>();
+
 
 }
