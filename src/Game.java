@@ -68,5 +68,11 @@ public class Game {
         else System.out.println("Nie masz żadnych dostepnych projektów");
     }
 
+    public void newProject(Player player){
+        Project project = new Project();
+        project.generate(date);
+        player.availableProjectsList.add(project);
+    }
+
 
 }

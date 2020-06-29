@@ -1,18 +1,47 @@
 import java.time.LocalDate;
+import java.util.Random;
+
 
 public class Project {
-    public String projectName;
     public Integer[] timeForTask = new Integer[6];
     /// front-end[0] ; backend[1] ; bazy[2] ; mobile[3] ; wordpress[4] ; prestashop [5]
     public Client client;
     public LocalDate commissionDate;
-    public Double penalty;
-    public Double cost;
+    public Integer penalty;
+    public Integer cost;
     public LocalDate paymentDate;
-    public Integer level; //1- 3
-    public Double loan;
+    public Integer level; //0-2
     public Integer bugs;
     public Integer testDays;
+    Random random = new Random();
+
+    public void generate(LocalDate today){
+        this.level = random.nextInt(3)+1;
+        int exit=level;
+        int buffor;
+        while(exit!=0){
+            buffor = random.nextInt(6);
+            if(this.timeForTask[buffor]==null) {
+                this.timeForTask[buffor] = random.nextInt(7) + 1;
+                exit-=1;
+            }
+        }
+        ///DODAĆ KLIENTA
+        this.commissionDate = today.plusDays(projectLength()+7);
+        this.paymentDate = commissionDate.plusDays(random.nextInt(14));
+        this.cost = projectLength()*50;
+        this.penalty = cost/10;
+    }
+
+    public Integer projectLength(){
+        Integer length=0;
+        for(int i=0; i<6; i++){
+            if(timeForTask[i]!=null) {
+                length += timeForTask[i];
+            }
+        }
+        return length;
+    }
 
     public boolean isProjectFinished(){
         boolean result = true;
@@ -23,5 +52,9 @@ public class Project {
             }
         }
         return result;
+    }
+
+    public String toString(){
+        return "FE: " + timeForTask[0] + "; BE: " + timeForTask[1] + "; BASES: " + timeForTask[2] + "; MOB: " + timeForTask[3] + "; WP: " + timeForTask[4] + "; PS: " + timeForTask[5] + "  ZA " + cost + "zł do oddania do " + commissionDate + " zapłata do " + paymentDate + "\n";
     }
 }
