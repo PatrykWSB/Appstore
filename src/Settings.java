@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 public class Settings {
     public final static LocalDate GAME_START_DAY = LocalDate.of(2020,1, 1);
-    public final static Integer GAME_START_CASH = 1000;
+    public final static Integer GAME_START_CASH = 10000;
     public final static String[] namesList = new String[]{"Andrzej","Janusz","Bartek","Olgierd","Patryk","Marcin","Wojtek","Tomek","Adrian","Michał","Justyna","Agnieszka","Martyna","Barbara","Marta","Żesika","Danuta","Małgosia","Julia","Elżbieta"};
 
     public final static Client COOL_CLIENT = new Client(30,20,0,0);

@@ -10,6 +10,6 @@ public class Main {
         game.newProject(player);
         game.newProject(player);
 
-        game.round(player);
+        game.day(player);
     }
 }

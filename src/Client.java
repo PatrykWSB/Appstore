@@ -1,8 +1,8 @@
 public class Client {
-    private Integer chanceForPaymentDelay;
-    private Integer chanceForNoPenalty;
-    private Integer chanceForLoosingProject;
-    private Integer chanceForNoPayment;
+    public Integer chanceForPaymentDelay;
+    public Integer chanceForNoPenalty;
+    public Integer chanceForLoosingProject;
+    public Integer chanceForNoPayment;
 
     public Client(Integer chanceForPaymentDelay, Integer chanceForNoPenalty, Integer chanceForLoosingProject, Integer chanceForNoPayment){
         this.chanceForPaymentDelay = chanceForPaymentDelay;

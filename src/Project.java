@@ -13,6 +13,8 @@ public class Project {
     public Integer level; //0-2
     public Integer bugs;
     public Integer testDays;
+    public Integer totalTaskDays = projectLength();
+    public Programmer programmer;
     Random random = new Random();
 
     public void generate(LocalDate today){
@@ -29,7 +31,7 @@ public class Project {
         this.client = Settings.clientList[random.nextInt(3)];
         this.commissionDate = today.plusDays(projectLength()+7);
         this.paymentDate = commissionDate.plusDays(random.nextInt(14));
-        this.cost = projectLength()*50;
+        this.cost = projectLength()*50*(level+1);
         this.penalty = cost/10;
     }
 
@@ -43,7 +45,7 @@ public class Project {
         return length;
     }
 
-    public boolean isProjectFinished(){
+   /* public boolean isProjectFinished(){
         boolean result = true;
         for(int i=0; i<6; i++){
             if(timeForTask[i] != 0) {
@@ -52,7 +54,33 @@ public class Project {
             }
         }
         return result;
+    }*/
+
+    public Project setTimeForTask(Integer i){
+        this.timeForTask[i]--;
+        return this;
     }
+
+    public Project setProgrammerForTask(Programmer programmer) {
+        this.programmer = programmer;
+        return this;
+    }
+
+    public Project setPaymentDate(LocalDate date) {
+        this.paymentDate = date;
+        return this;
+    }
+
+    public Project setTotalTimeForTask(){
+        this.totalTaskDays--;
+        return this;
+    }
+
+    public Project setBug(){
+        this.bugs++;
+        return this;
+    }
+
 
     public String toString(){
         return "FE: " + timeForTask[0] + "; BE: " + timeForTask[1] + "; BASES: " + timeForTask[2] + "; MOB: " + timeForTask[3] + "; WP: " + timeForTask[4] + "; PS: " + timeForTask[5] + "  ZA " + cost + "zł do oddania do " + commissionDate + " zapłata do " + paymentDate + "\n";
