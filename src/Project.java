@@ -26,7 +26,7 @@ public class Project {
                 exit-=1;
             }
         }
-        ///DODAĆ KLIENTA
+        this.client = Settings.clientList[random.nextInt(3)];
         this.commissionDate = today.plusDays(projectLength()+7);
         this.paymentDate = commissionDate.plusDays(random.nextInt(14));
         this.cost = projectLength()*50;

@@ -33,9 +33,12 @@ public class Game {
                 case 3:
                     System.out.println(player.cash);
                     break;
-                case 4: /// do szukaj klientow
+                case 4:
                     lookForClient += 1;
-                    // if lookForClient == 5 generate new project
+                    if(lookForClient==5){
+                        lookForClient = 0;
+                        newProject(player);
+                    }
                     break;
                 case 5: /// programuj
                     break;
