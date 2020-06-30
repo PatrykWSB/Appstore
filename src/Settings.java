@@ -11,9 +11,9 @@ public class Settings {
     public static Client[] clientList = new Client[]{COOL_CLIENT,TOUGH_CLIENT,MF_CLIENT};
 
     public final static Integer[] STUDENT_SKILL_LIST = new Integer[]{1,1,1,1,1,1};
-    public Programmer bestStudent = new Programmer("Kacper",STUDENT_SKILL_LIST,100,100,500);
-    public Programmer averageStudent = new Programmer("Melchior",STUDENT_SKILL_LIST,90,100,350);
-    public Programmer worstStudent = new Programmer("Baltazar",STUDENT_SKILL_LIST,80,80,200);
+    public static Programmer bestStudent = new Programmer("Kacper",STUDENT_SKILL_LIST,100,100,500);
+    public static Programmer averageStudent = new Programmer("Melchior",STUDENT_SKILL_LIST,90,100,350);
+    public static Programmer worstStudent = new Programmer("Baltazar",STUDENT_SKILL_LIST,80,80,200);
 
 
 

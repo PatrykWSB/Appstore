@@ -4,10 +4,14 @@ import java.util.Scanner;
 
 public class Game {
     public LocalDate date = Settings.GAME_START_DAY;
-    Scanner keyboard = new Scanner(System.in);
-    Integer intSwitch = 0;
-    Integer zus = 0;
-    Integer lookForClient = 0;
+    public Scanner keyboard = new Scanner(System.in);
+    public Integer intSwitch = 0;
+    public Integer zus = 0;
+    public Integer lookForClient = 0;
+    public ArrayList<Programmer> availableProgrammers = new ArrayList<>();
+    public Integer advertisement = 0;
+    public Integer availableTesters = 0;
+    public Integer availableSellers = 0;
 
     public void round(Player player) {
         while (intSwitch!=110) {
@@ -44,7 +48,8 @@ public class Game {
                     break;
                 case 6: /// testuj
                     break;
-                case 7: /// zatrudnij
+                case 7:
+                    hire(player);
                     break;
                 case 8:
                     System.out.println(player.programmerList);
@@ -56,6 +61,7 @@ public class Game {
         }
         date = date.plusDays(1);
     }
+
     public void openProjects(Player player){ /// do rozwinięcia (klienci bugi i inne)
         for(int i=0; i<player.startedProjectsList.size(); i++){
             System.out.println((i+1) + ". " + player.startedProjectsList.get(i) + "\n");
@@ -75,6 +81,33 @@ public class Game {
         Project project = new Project();
         project.generate(date);
         player.availableProjectsList.add(project);
+    }
+
+    public void hire(Player player){
+        if(availableProgrammers.size() == 0) System.out.println("Nie ma żadnych dostępnych pracowników");
+        else{
+            System.out.println("Dostępnych jest " + availableTesters + " testerów. Każdy kosztuje 300zl miesiecznie");
+            System.out.println("Dostępnych jest " + availableSellers + " sprzedawców. Każdy kosztuje 100zl miesięcznie");
+            for(int i=0; i<availableProgrammers.size(); i++){
+                System.out.println("(" + i+2 + ")" + availableProgrammers.get(i));
+            }
+            System.out.println("Aby zatrudnić testera wpisz 0, aby zatrudnić sprzedawcę wpisz 1, aby zatrudnić programistę wpisz przypisany mu numer");
+            intSwitch = keyboard.nextInt();
+            if(intSwitch == 0 && availableTesters != 0) {
+                player.cash -= 30;
+                player.testers++;
+            }
+            else if(intSwitch == 0 && availableTesters == 0) System.out.println("Nie masz żadnych testerów do zatrudnienia");
+            else if(intSwitch == 1 && availableSellers != 0) {
+                player.cash -= 10;
+                player.sellersList.add(0);
+            }
+            else if(intSwitch == 1 && availableSellers == 0) System.out.println("Nie masz żadnych sprzedawców do zatrudnienia");
+            else if(intSwitch-2<availableProgrammers.size()){
+                player.programmerList.add(availableProgrammers.get(intSwitch-2));
+                player.cash -= availableProgrammers.get(intSwitch-2).cost/10;
+            }
+        }
     }
 
 

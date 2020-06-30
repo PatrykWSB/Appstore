@@ -16,7 +16,6 @@ public class Programmer {
         this.cost = cost;
     }
 
-
     public void generate(){
         int buffor=0;
         this.name = Settings.namesList[random.nextInt(20)];
@@ -28,5 +27,10 @@ public class Programmer {
         this.punctuality = random.nextInt(20)+80;
         cost = buffor*50 + random.nextInt(7)*50;
     }
+
+    public String toString(){
+        return name + " FE:" + skillList[0] + "; BE:" + skillList[1] + "; BASES:" + skillList[2] + "; MOB:" + skillList[3] + "; WP:" + skillList[4] + "; PS:" + skillList[5] + " dokładność: " + accuracy + " punktualność: " + punctuality + " wypłata: " + cost + "\n";
+    }
+
 
 }
